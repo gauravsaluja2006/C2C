@@ -1,0 +1,42 @@
+
+
+
+
+    <header class="panel-heading">
+        Media Manager
+
+    </header>
+   
+
+        <ul id="filters" class="media-filter">
+            <li><a href="#" data-filter="*"> All</a></li>
+            <li><a href="#" data-filter=".images">Images</a></li>
+            <li><a href="#" data-filter=".audio">Audio</a></li>
+            <li><a href="#" data-filter=".video">Video</a></li>
+            <li><a href="#" data-filter=".documents">Documents</a></li>
+        </ul>
+
+
+        
+        <div id="gallery" class="media-gal">
+            <div class="images item " ng-repeat="motherboard in motherboards" my-post-repeat-directive>
+                <a href="#myModal" data-toggle="modal">
+                    <img src="images/gallery/image1.jpg" alt="" />
+                </a>
+                <p>{{motherboard.Platform}}</p>
+            </div>
+
+            
+        </div>
+
+
+
+
+\
+
+
+<script src="js/jquery.isotope.js"></script>
+<script type="text/javascript">
+    $(function() {
+    });
+</script>

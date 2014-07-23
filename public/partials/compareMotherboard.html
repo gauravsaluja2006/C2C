@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-sm-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Dynamic Table
+
+            </header>
+            <div class="panel-body">
+                <div class="adv-table">
+                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Platform</th>
+                                <th>Manufacturer</th>
+                                <th class="hidden-phone">Price (Rs)</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in comparelist">
+                                <td>{{item.Name}}</td>
+                                <td>{{item.Platform}}</td>
+                                <td>{{item.manufacturer}}</td>
+                                <td>{{item.Price}}</td>
+
+                            </tr>
+
+                            </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<a type="button" class="btn btn-success btn-xs" ng-click="item.upload()" href="#/intelMotherboards">
+    <span class="glyphicon glyphicon-upload"></span> Done
+</a>

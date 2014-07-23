@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>My AngularJS App</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
+        <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
+        <link rel="stylesheet" href="css/app.css"/>
+        <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+        <link href="css/showMyPc.css" rel="stylesheet" type="text/css"/>
+        <link href="css/customDrag.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .sidebar{
+                position: fixed;
+                background-color: #f5f5f5;
+                top: 51px;
+                left: 0px;
+                height: 100%;
+                width: 25%;
+            }
+
+            .content{
+
+                position: absolute;
+                right: 0px;
+                width: 75%;
+                top: 51px;
+                padding: 10px;
+            }
+
+
+            img {
+                filter: gray; /* IE6-9 */
+                -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+
+                margin-bottom:20px;
+                height: 200px;
+                width: 250px;
+            }
+
+            img:hover {
+                filter: none; /* IE6-9 */
+                -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+                -webkit-box-shadow: 0px 7px 6px 2px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+                text-decoration: none;
+
+            }
+
+
+            .nav-sidebar > li > a {
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+            .nav-sidebar > .active > a,
+            .nav-sidebar > .active > a:hover,
+            .nav-sidebar > .active > a:focus {
+                color: #fff;
+                background-color: #428bca;
+            }
+
+            #priceContainer{
+                position: fixed;
+                left: 0px;
+                bottom: 0px;
+                height: 50px;
+                width: 25%;
+                border: 1px solid #08c;
+            }
+
+            #compareBox{
+                position: fixed;
+                bottom: 0px;
+                width: 100%;
+                height: 20%;
+                background-color: black;
+                overflow-y: scroll;
+                overflow-x: no-content;
+
+            }
+        </style>
+
+
+
+    <body ng-controller="mainCtrl">
+
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">C2C</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+
+
+
+        <div class="container">
+            <div class="sidebar">
+                <ul class="nav nav-sidebar">
+                    <li ng-class="{active: routeIs('/manufacturer')}"><a href="#manufacturer">Manufacturer</a></li>
+                    <li ng-class="{active: routeIs('/intelMotherboards')}"><a href="#intelMotherboards">Motherboards</a></li>
+                    <li ng-class="{active: routeIs('/intelProcessors')}"><a href="#intelProcessors">Processors</a></li>
+
+                    <li ng-class="{active: routeIs('/mouse')}"><a href="#mouse">Mouse</a></li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li ng-class="{active: routeIs('/keyboard')}"><a href="#keyboard">Keyboard</a></li>
+                    <li ng-class="{active: routeIs('/monitor')}"><a href="#monitor">Monitor</a></li>
+
+                </ul>
+
+                <pre>{{myPc|json}}
+                <span id="priceContainer">Price</span>
+            </div>
+
+            <div class="content">
+
+                <toaster-container toaster-options="{'position-class': 'toast-top-right'}"></toaster-container>
+                <div ng-view></div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <div class="container" drop="moveToSold" ng-controller="mainCtrl">
+        <div id="compareBox">
+            <div style="display: inline;" ng-repeat="item in comparelist" drag ng-model="processor">
+       
+        <img ng-src="{{item.img}}" style="height: 100px; width: 100px;"/>
+    </div>
+        </div>
+        </div>
+        
+        
+        
+        
+        
+            </div>
+
+
+        <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+        -->
+        <script src="bower_components/angular/angular.js"></script>
+
+        <link href="app/js/toastr.js/css/toaster.css" rel="stylesheet" type="text/css"/>
+        <script src="app/js/toastr.js/js/toaster.js" type="text/javascript"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/ngAnimate/js/angular-animate.min.js" type="text/javascript"></script>
+        <script src="appJs/app.js"></script>
+        <script src="appJs/services.js"></script>
+        <script src="appJs/controllers.js"></script>
+        <script src="appJs/filters.js"></script>
+        <script src="appJs/directives.js"></script>
+        <script src="app/js/jquery/jquery.js" type="text/javascript"></script>
+        <script src="app/js/masonry/masonry.pkgd.js" type="text/javascript"></script>
+        <script src="app/js/masonry/masonry.js" type="text/javascript"></script>
+        <link href="app/js/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="app/js/twitter-bootstrap/js/bootstrap.js" type="text/javascript"></script>
+        <script src="bower_components/jquery-ui/jquery-ui.js" type="text/javascript"></script>
+        <script src="bower_components/drag-drop/angular-dnd.js" type="text/javascript"></script>
+    </body>
+</html>

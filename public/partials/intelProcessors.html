@@ -1,0 +1,40 @@
+<h1 class="page-header">Select a Processor</h1>
+<div drag>
+    <span ng-repeat="processor in processors" drag ng-model="processor">        
+        <a ng-click="setProcessor(processor)">
+        <div class="col-sm-6 col-md-4 col-lg-3 addShadow" >
+            <section class="panel" style="">
+            <div class="panel-body">
+                <div class="top-stats-panel">
+                    <div class="daily-visit">
+                        <h4 class="widget-h">{{processor.Name}}</h4>
+                        
+                        <div id="daily-visit-chart" style="width:100%; height: 100px; display: block">
+                            <img ng-src="/img/intel/{{processor.img}}" style="width: 100px; height: 100px;">
+                        </div>
+                        <ul class="chart-meta clearfix">
+                            <li class="pull-left visit-chart-value">Rs {{processor.Price}}</li>
+                            <li class="pull-right visit-chart-title"><i class="fa fa-arrow-up"></i>{{processor.Platform}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+        </a>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

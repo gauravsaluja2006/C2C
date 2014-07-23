@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="ThemeBucket">
+        <link rel="shortcut icon" href="images/favicon.png">
+
+        <title>Blank page</title>
+
+        <!--Core CSS -->
+        <link href="bs3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-reset.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="css/bootstrap-tour/bootstrap-tour.css" rel="stylesheet" type="text/css"/>
+
+        <!-- Custom styles for this template -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/style-responsive.css" rel="stylesheet" />
+        <link href="css/bootstrap-switch.css" rel="stylesheet" type="text/css"/>
+
+
+
+
+        <!-- my custom CSS files-->
+        <link rel="stylesheet" href="css/app.css"/>
+        <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+        <link href="css/showMyPc.css" rel="stylesheet" type="text/css"/>
+        <link href="css/customDrag.css" rel="stylesheet" type="text/css"/>
+        <link href="css/myCustom.css" rel="stylesheet" type="text/css"/>
+
+
+        <!-- Just for debugging purposes. Don't actually copy this line! -->
+        <!--[if lt IE 9]>
+        <script src="js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+
+        <style>
+
+
+        </style>
+
+
+        <script src="js/TweenLite.min.js" type="text/javascript"></script>
+
+
+    </head>
+
+    <body ng-controller="mainCtrl">
+
+        <div id="container" >
+            <div class="row">
+                <!--header start-->
+                <header class="header fixed-top clearfix">
+                    <!--logo start-->
+                    <div class="brand">
+
+                        <a href="index.html" class="logo">
+                            <img src="images/logo.png" alt="">
+                        </a>
+                        <div class="sidebar-toggle-box" id="demo-le">
+                            <div class="fa fa-bars"></div>
+                        </div>
+                    </div>
+                    <!--logo end-->
+
+
+                    <div class="top-nav clearfix">
+                        <!--search & user info start-->
+                        <ul class="nav pull-right top-menu">
+
+                            <!-- user login dropdown start-->
+                            <li class="dropdown" id="demo-lo">
+                                <a role="button" data-toggle="modal" data-target="#loginModal" style="cursor: pointer;">
+                                    <img alt="" src="images/avatar1_small.jpg">
+                                    <span class="username">Admin Login</span>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu extended logout">
+                                    <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                                    <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
+                                    <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+                            <!-- user login dropdown end -->
+                            <li id="demo-co">
+                                <div class="toggle-right-box">
+                                    <div class="fa fa-bars"></div>
+                                </div>
+                            </li>
+                        </ul>
+                        <!--search & user info end-->
+                    </div>
+                </header>
+                <!--header end-->
+                <aside>
+                    <div id="sidebar" class="nav-collapse">
+                        <!-- sidebar menu start-->            
+
+                        <div class="leftside-navigation">
+                            <div class="sidebar-menu">
+                                <div class="col-lg-3" style="position: relative; left: 0px;">
+                                    <section class="panel" style="width: 225px; margin-top: 30px;">
+                                        <div class="panel-body">
+
+                                            <ul class="nav nav-pills nav-stacked mail-nav">
+                                                <li id="demo-mo" ng-class="{active: routeIs('/intelMotherboards')}" style="position: relative;"><a href="#/intelMotherboards"> <i class="fa fa-inbox"></i> Motherboards </a>  <span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.motherboard == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <li ng-class="{active: routeIs('/intelProcessors')}"><a href="#/intelProcessors"> <i class="fa fa-envelope-o"></i> Processors</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.processor == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <li ng-class="{active: routeIs('/mouse')}"><a href="#/mouse"> <i class="fa fa-certificate"></i> Mouse</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.mouse == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <li ng-class="{active: routeIs('/keyboard')}"><a href="#/keyboard"> <i class="fa fa-file-text-o"></i> Keyboard </a></a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.keyboard == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <li ng-class="{active: routeIs('/monitor')}"><a href="#/monitor"> <i class="fa fa-trash-o"></i> Monitor</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.monitor == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <br/><br/>
+                                                <li id="demo-pr" style="color:#428bca;padding-top: 16px;border-top: 1px solid #dddddd; margin-left: 15px;"><i class="fa fa-trash-o"></i> Price: &nbsp;{{myPc.total}} </li>
+                                            
+                                            </ul>
+
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- sidebar menu end-->
+                    </div>
+                </aside>
+                <!--sidebar end-->
+                <!--main content start-->
+                <section id="main-content">
+                    <section class="wrapper">
+                        <!-- page start-->
+
+
+
+
+
+
+
+                        <div ng-view style="padding: 10px;"></div>
+
+
+
+
+
+
+                        <!-- page end-->
+                    </section>
+                </section>
+                <!--main content end-->
+                <!--right sidebar start-->
+                <div class="right-sidebar addShadow" drop="moveToSold">
+                    <div id="compareBox" style="overflow-x: visible;">
+                        <div style="display: inline;" ng-repeat="item in comparelist" drag ng-model="processor" >
+                            <span style="position: relative;">
+                                <span class="compareTile">        
+                                    <img ng-src="img/intel/{{item.img}}" style="height: 100px; width: 100px;" style="margin-bottom: 20px;"/>
+                                </span>
+                                <div id="myMinButton" ng-click="removeCompare(item)">
+                                    <img src="img/min.png" style="height: 20px; width: 20px;" style="position: absolute; top: 0px; right: 0px;">
+                                </div>
+                            </span>
+                        </div>
+                        <a  ng-click="goCompare()" type="button" class="btn btn-primary" style="margin-top: 15px;" ng-show="comparelist.length > 1">Compare</a>
+                        <a  ng-click="comparelist.length = 0;" type="button" class="btn btn-success" style="margin-top: 15px;" ng-show="comparelist.length > 0">Clear</a>
+
+                    </div>
+                </div>
+                <!--right sidebar end-->
+                <toaster-container toaster-options="{'position-class': 'toast-bottom-right'}"></toaster-container>
+                <div>
+                </div>
+
+
+
+
+
+                <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog"  style="left: 0%; width: -1px; margin-left: 6%;">
+                        <div class="container">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Login</h4>
+                                </div>
+
+                                <div class="modal-body row">
+
+
+
+                                    <div class="row vertical-offset-100">
+                                        <div class="col-md-4 col-md-offset-4">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title">Please sign in</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <form accept-charset="UTF-8" role="form">
+                                                        <fieldset>
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Username" name="email" type="text" ng-model="username">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <input class="form-control" placeholder="Password" name="password" type="password" value="" ng-model="password">
+                                                            </div>
+                                                            <div class="checkbox">
+
+                                                            </div>
+                                                            <a class="btn btn-lg btn-success btn-block" type="submit" ng-click="checkLogin()" role="button" data-dismiss="modal">Login</a>
+                                                        </fieldset>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Placed js at the end of the document so the pages load faster -->
+
+                    <!--Core js-->
+                    <script src="js/jquery.js"></script>
+                    <script src="bs3/js/bootstrap.min.js"></script>
+                    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
+                    <script src="js/jquery.scrollTo.min.js"></script>
+                    <script src="js/jQuery-slimScroll-1.3.0/jquery.slimscroll.js"></script>
+                    <script src="js/jquery.nicescroll.js"></script>
+                    <!--Easy Pie Chart-->
+                    <script src="js/easypiechart/jquery.easypiechart.js"></script>
+                    <!--Sparkline Chart-->
+                    <script src="js/sparkline/jquery.sparkline.js"></script>
+                    <!--jQuery Flot Chart-->
+                    <!--script src="js/flot-chart/jquery.flot.js"></script>
+                    <script src="js/flot-chart/jquery.flot.tooltip.min.js"></script>
+                    <script src="js/flot-chart/jquery.flot.resize.js"></script>
+                    <script src="js/flot-chart/jquery.flot.pie.resize.js"></script-->
+
+                    <script src="js/bootstrap-switch.js"></script>
+
+                    <script src="js/scripts.js"></script>
+
+
+
+                    <!-- my custom js files -->
+                    <script src="bower_components/angular/angular.js"></script>
+
+                    <link href="app/js/toastr.js/css/toaster.css" rel="stylesheet" type="text/css"/>
+                    <script src="app/js/toastr.js/js/toaster.js" type="text/javascript"></script>
+                    <script src="bower_components/angular-route/angular-route.js"></script>
+                    <script src="bower_components/ngAnimate/js/angular-animate.min.js" type="text/javascript"></script>
+                    <script src="bower_components/angular-resource/angular-resource.js" type="text/javascript"></script>
+                    <script src="bower_components/es5-shim/es5-shim.js" type="text/javascript"></script>
+                    <script src="bower_components/angular-file-upload.js" type="text/javascript"></script>
+                    <script src="appJs/app.js"></script>
+                    <script src="appJs/services.js"></script>
+                    <script src="appJs/controllers.js"></script>
+                    <script src="appJs/filters.js"></script>
+                    <script src="appJs/directives.js"></script>
+                    <script src="app/js/jquery/jquery.js" type="text/javascript"></script>
+                    <script src="app/js/masonry/masonry.pkgd.js" type="text/javascript"></script>
+                    <script src="app/js/masonry/masonry.js" type="text/javascript"></script>
+                    <link href="app/js/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+                    <script src="app/js/twitter-bootstrap/js/bootstrap.js" type="text/javascript"></script>
+                    <script src="bower_components/jquery-ui/jquery-ui.js" type="text/javascript"></script>
+                    <script src="bower_components/drag-drop/angular-dnd.js" type="text/javascript"></script>
+                    <script src="css/bootstrap-tour/bootstrap-tour.js" type="text/javascript"></script>
+                    <script>
+                                                                var tour = new Tour({
+                                                                    storage:false,
+                                                                    keyboard:true
+                                                                });
+                                                                tour.addSteps([
+                                                                    {
+                                                                        element: "#demo-mo", // element selector to show the popover next to;
+                                                                        title: "Choose your components here!",
+                                                                        content: "An arrow will show up when they are selected."
+                                                                        
+                                                                    },
+                                                                    {
+                                                                        element: "#demo-lo",
+                                                                        title: "Add inventory?.",
+                                                                        content: "Login as Admin!",
+                                                                        placement:"bottom"
+                                                                    },
+                                                                    {
+                                                                        element: "#demo-co",
+                                                                        title: "Want to compare items?.",
+                                                                        content: "Drag them to the compare box!",
+                                                                        placement:"left"
+                                                                    },
+                                                                    {
+                                                                        element: "#demo-le",
+                                                                        title: "Need more space?",
+                                                                        content: "Click the button to retract sidebar!",
+                                                                        placement:"right"
+                                                                    },
+                                                                    {
+                                                                        element: "#demo-pr",
+                                                                        title: "Stay Updated!",
+                                                                        content: "You can see the total price here!",
+                                                                        placement:"right"
+                                                                    }
+                                                                ]);
+
+                                                                tour.init();
+
+                                                                tour.start();
+                    </script>
+
+
+
+
+
+                    </body>
+                    </html>

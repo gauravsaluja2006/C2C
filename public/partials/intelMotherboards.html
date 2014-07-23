@@ -1,0 +1,40 @@
+<h1 class="page-header">Select a Motherboard</h1>
+
+<div>
+    <span ng-repeat="motherboard in motherboards" drag ng-model="motherboard" class="{{motherboard.Name}}">
+        <!--a ng-click="setMotherboard(motherboard.name)">
+        <img ng-src="{{motherboard.img}}">
+        &nbsp;&nbsp;
+    </a-->
+
+
+
+
+
+
+        <a ng-click="setMotherboard(motherboard)" class="{{motherboard.Platform}} item">
+            <div class="col-sm-6 col-md-4 col-lg-3 addShadow" >
+                <section class="panel">
+                    <div class="panel-body">
+                        <div class="top-stats-panel">
+                            <div class="daily-visit">
+                                <h4 class="widget-h">{{motherboard.Name}}</h4>
+
+                                <div id="daily-visit-chart" style="width:100%; height: 100px; display: block">
+                                    <img ng-src="/img/intel/{{motherboard.img}}" style="width: 100px; height: 100px;">
+                                </div>
+                                <ul class="chart-meta clearfix">
+                                    <li class="pull-left visit-chart-value">Rs {{motherboard.Price}}</li>
+                                    <li class="pull-right visit-chart-title"><i class="fa fa-arrow-up"></i>{{motherboard.Platform}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </a>
+
+
+    </span>
+</div>
+

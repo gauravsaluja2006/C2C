@@ -1,0 +1,70 @@
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-8 col-xs-9 bhoechie-tab-container">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 bhoechie-tab-menu">
+                <div class="list-group">
+                    <a href="" class="list-group-item text-center" ng-class="{active: itemIs('Flight')}" ng-click="itemSel='Flight';">
+                        <h4 class="glyphicon glyphicon-plane"></h4><br/>Motherboard
+                    </a>
+                    <a href="" class="list-group-item text-center" ng-class="{active: itemIs('Train')}" ng-click="itemSel='Train';">
+                        <h4 class="glyphicon glyphicon-road"></h4><br/>Processor
+                    </a>
+                    <a href="" class="list-group-item text-center" ng-class="{active: itemIs('Hotel')}" ng-click="itemSel='Hotel';">
+                        <h4 class="glyphicon glyphicon-home"></h4><br/>Mouse
+                    </a>
+                    <a href="" class="list-group-item text-center" ng-class="{active: itemIs('Restaraunt')}" ng-click="itemSel='Restaraunt';">
+                        <h4 class="glyphicon glyphicon-cutlery"></h4><br/>Keyboard
+                    </a>
+                    <a href="" class="list-group-item text-center" ng-class="{active: itemIs('Credit')}" ng-click="itemSel='Credit';">
+                        <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Monitor Card
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                <!-- flight section -->
+                <div class="bhoechie-tab-content" ng-class="{active: itemIs('Flight')}">
+                    <center>
+                       
+                        <h2 style="margin-top: 0;color:#55518a"></h2>
+                        <h3 style="margin-top: 0;color:#55518a"><img ng-src="{{myPc.motherboard.img}}" style="width: 248px; height: 248px;"/></h3>
+                    </center>
+                </div>
+                <!-- train section -->
+                <div class="bhoechie-tab-content" ng-class="{active: itemIs('Train')}">
+                    <center>
+                       
+                        <h2 style="margin-top: 0;color:#55518a"></h2>
+                        <h3 style="margin-top: 0;color:#55518a"><img ng-src="{{myPc.processor.img}}" style="width: 248px; height: 248px;"/></h3>
+                    </center>
+                </div>
+
+                <!-- hotel search -->
+                <div class="bhoechie-tab-content" ng-class="{active: itemIs('Hotel')}">
+                    <center>
+                        
+                        <h2 style="margin-top: 0;color:#55518a"></h2>
+                        <h3 style="margin-top: 0;color:#55518a"><img ng-src="{{myPc.mouse.img}}" style="width: 248px; height: 248px;"/></h3>
+                    </center>
+                </div>
+                <div class="bhoechie-tab-content" ng-class="{active: itemIs('Restaraunt')}">
+                    <center>
+                        
+                        <h2 style="margin-top: 0;color:#55518a"></h2>
+                        <h3 style="margin-top: 0;color:#55518a"><img ng-src="{{myPc.keyboard.img}}" style="width: 248px; height: 248px;"/></h3>
+                    </center>
+                </div>
+                <div class="bhoechie-tab-content" ng-class="{active: itemIs('Credit')}">
+                    <center>
+                        
+                        <h2 style="margin-top: 0;color:#55518a"></h2>
+                        <h3 style="margin-top: 0;color:#55518a"><img ng-src="{{myPc.monitor.img}}" style="width: 248px; height: 248px;"/></h3>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
