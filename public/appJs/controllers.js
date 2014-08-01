@@ -1,6 +1,6 @@
 'use strict';
 
-var loggedInUser=false;
+var loggedInUser = false,sLogin;
 
 /* Controllers */
 
@@ -11,31 +11,35 @@ angular.module('myApp.controllers', [])
         .controller('MyCtrl2', ['$scope', function($scope) {
 
             }])
-        .controller('mainCtrl', ['$scope', '$location', 'toaster', function($scope, $location, toaster, dragAndDrop) {
+        .controller('mainCtrl', ['$scope', 'addOrderService', '$location', 'toaster', function($scope, addOrderService, $location, toaster, dragAndDrop) {
                 $scope.routeIs = function(routeName) {
                     $scope.showComp = $location.path() == '/intelProcessors' || $location.path() == '/intelMotherboards';
                     //console.log($scope.showComp);
                     return $location.path() === routeName;
                 };
-                
+                $scope.createPC = true;
+                $scope.sLogin;
+                $scope.finalised = 0;
                 $scope.username;
                 $scope.password;
-                $scope.checkLogin = function(){
-                    
+                $scope.checkLogin = function() {
+
                     console.log('checking');
-                  if(($scope.username==='admin')&&($scope.password==='admin'))
-                  {
-                      loggedInUser = true;
-                      console.log('login successful');
-                      $location.path('/dashboard');
-                  }
-                  else{
-                      toaster.pop('error', "Sorry", 'Not Authorised.');
-                  }
+                    if (($scope.username === 'admin') && ($scope.password === 'admin'))
+                    {
+                        loggedInUser = true;
+                        console.log('login successful');
+                        sLogin = sLogin || '/dashboard';
+                        $location.path(sLogin);
+                    }
+                    else {
+                        toaster.pop('error', "Sorry", 'Not Authorised.');
+                         
+                    }
                 };
-                
-                
-                
+
+
+
                 $scope.compPath;
                 $scope.goCompare = function() {
                     if ($scope.comparelist.length >= 2)
@@ -73,16 +77,21 @@ angular.module('myApp.controllers', [])
                     $scope.myPc.manufacturer = manufacturer;
                     toaster.pop('success', "Selected Manufacturer", manufacturer);
                     toaster.pop('note', "Next", 'Select a Motherboard');
+                    //$scope.finalised += 1;
                     $location.path('/intelMotherboards');
+
                 };
                 $scope.setMotherboard = function(motherboard) {
+                    console.log(motherboard);
                     $scope.myPc.motherboard = motherboard;
+                    console.log($scope.myPc.motherboard);
                     $scope.myPc.set.motherboard = 'Y';
                     $scope.myPc.price.motherboard = $scope.myPc.motherboard.Price;
                     $scope.myPc.getPrice();
 
                     toaster.pop('success', "Selected Motherboard", motherboard.Name);
                     toaster.pop('note', "Next", 'Select a Processor');
+                    $scope.finalised += 1;
                     $location.path('/intelProcessors');
 
 
@@ -95,6 +104,7 @@ angular.module('myApp.controllers', [])
                     $scope.myPc.set.processor = 'Y';
                     toaster.pop('success', "Selected Processor", processor.Name);
                     toaster.pop('note', "Next", 'Select a Mouse');
+                    $scope.finalised += 1;
                     $location.path('/mouse');
                 };
                 $scope.setMouse = function(mouse) {
@@ -105,6 +115,7 @@ angular.module('myApp.controllers', [])
                     $scope.myPc.set.mouse = 'Y';
                     toaster.pop('success', "Selected Mouse", mouse.Name);
                     toaster.pop('note', "Next", 'Select a Keyboard');
+                    $scope.finalised += 1;
                     $location.path('/keyboard');
                 };
                 $scope.setKeyboard = function(keyboard) {
@@ -115,6 +126,7 @@ angular.module('myApp.controllers', [])
                     $scope.myPc.set.keyboard = 'Y';
                     toaster.pop('success', "Selected Keyboard", keyboard.Name);
                     toaster.pop('note', "Next", 'Select a Monitor');
+                    $scope.finalised += 1;
                     $location.path('/monitor');
                 };
                 $scope.setMonitor = function(monitor) {
@@ -124,9 +136,10 @@ angular.module('myApp.controllers', [])
 
                     $scope.myPc.set.monitor = 'Y';
                     toaster.pop('success', "Selected Monitor", monitor.Name);
+                    $scope.finalised += 1;
                     //$location.path('/intelMotherboards');
                     $scope.myPc.getPrice();
-
+                    console.log($scope.myPc);
                 };
                 $scope.comparelist = [];
                 $scope.compItem;
@@ -189,11 +202,28 @@ angular.module('myApp.controllers', [])
                         return;
                     $scope.comparelist.splice(index, 1);
                 };
+
+                $scope.myOrder = {};
+                $scope.order = function() {
+                    $scope.myOrder.components = {};
+                    $scope.myOrder.components.motherboard = $scope.myPc.motherboard._id;
+                    $scope.myOrder.components.processor = $scope.myPc.processor._id;
+                    $scope.myOrder.components.mouse = $scope.myPc.mouse._id;
+                    $scope.myOrder.components.monitor = $scope.myPc.monitor._id;
+                    $scope.myOrder.components.keyboard = $scope.myPc.keyboard._id;
+                    $scope.myOrder.price = $scope.myPc.total;
+                    $scope.myOrder.time = new Date();
+                    console.log($scope.myOrder);
+                    addOrderService.save($scope.myOrder);
+                };
+
+
             }])
         .controller('intelProcessorsCtrl', ['$scope', 'getProcessors', function($scope, getProcessors) {
 
 
                 $scope.processors = getProcessors.query();
+                //console.log($scope.processors);
 
                 /*  $scope.processors = [
                  {
@@ -409,72 +439,15 @@ angular.module('myApp.controllers', [])
                  ];
                  */
             }])
-        .controller('mouseCtrl', ['$scope', function($scope) {
-                $scope.mouses = [
-                    {
-                        "Name": "Wired Mouse",
-                        "img": "img/mouse/mouse.jpg",
-                        "Price": 340,
-                        "type": "mouse"
-                    },
-                    {
-                        "Name": "Wireless Mouse",
-                        "img": "img/mouse/mouseWL.jpg",
-                        "Price": 650,
-                        "type": "mouse"
-                    }
-                ];
-            }])
-        .controller('keyboardCtrl', ['$scope', function($scope) {
-                $scope.keyboards = [
-                    {
-                        "Name": "Bluetooth Keyboard",
-                        "img": "img/keyboard/bluetooth.jpg",
-                        "Price": 1290,
-                        "type": "keyboard"
-                    },
-                    {
-                        "Name": "Gaming Keyboard",
-                        "img": "img/keyboard/gaming.png",
-                        "Price": 1400,
-                        "type": "keyboard"
-                    },
-                    {
-                        "Name": "Virtual Keyboard",
-                        "img": "img/keyboard/virtual.jpg",
-                        "Price": 990,
-                        "type": "keyboard"
-                    },
-                    {
-                        "Name": "Wired Keyboard",
-                        "img": "img/keyboard/wired.jpg",
-                        "Price": 350,
-                        "type": "keyboard"
-                    },
-                    {
-                        "Name": "Wireless Keyboard",
-                        "img": "img/keyboard/wireless.jpg",
-                        "Price": 520,
-                        "type": "keyboard"
-                    },
-                ];
-            }])
-        .controller('monitorCtrl', ['$scope', function($scope) {
-                $scope.monitors = [
-                    {
-                        "Name": "LCD Monitor",
-                        "img": "img/monitor/lcd.jpg",
-                        "Price": 10550,
-                        "type": "monitor"
+        .controller('mouseCtrl', ['$scope', 'getMouse', function($scope, getMouse) {
 
-                    },
-                    {
-                        "Name": "LED Monitor",
-                        "img": "img/monitor/led.jpg",
-                        "Price": 19990,
-                        "type": "monitor"
-                    }
-                ];
+                $scope.mouses = getMouse.query();
+            }])
+        .controller('keyboardCtrl', ['$scope', 'getKeyboards', function($scope, getKeyboards) {
+                $scope.keyboards = getKeyboards.query();
+            }])
+        .controller('monitorCtrl', ['$scope', 'getMonitors', function($scope, getMonitors) {
+                $scope.monitors = getMonitors.query();
             }])
         .controller('finalCtrl', ['$scope', function($scope) {
 
@@ -488,21 +461,26 @@ angular.module('myApp.controllers', [])
 
                 $scope.try = 'yep';
             }])
-        .controller('dashCtrl', ['$scope', 'addProductService', '$fileUploader','$location','toaster', function($scope, addProductService, $fileUploader, $location, toaster) {
-                
-                
-                if(loggedInUser){
+        .controller('dashCtrl', ['$scope', 'addProductService', '$fileUploader', '$location', 'toaster', function($scope, addProductService, $fileUploader, $location, toaster) {
+
+
+                if (loggedInUser) {
                     
                 }
-        
-                else{
+
+                else {
                     console.log('not authorised');
                     $location.path('/intelMotherboards');
                     toaster.pop('error', "Sorry", 'Not Authorised');
-                    
+                    $('#loginButton').click();
                 }
-                
-                        $scope.done;
+                ;
+
+
+
+
+
+                $scope.done;
                 $scope.addProduct = {};
                 $scope.add = function() {
                     addProductService.save($scope.addProduct);
@@ -554,7 +532,7 @@ angular.module('myApp.controllers', [])
                     $scope.addProduct.img = response;
                     console.log($scope.addProduct.img);
                     $scope.$apply();
-                    $scope.done=true;
+                    $scope.done = true;
 
                 });
 
@@ -584,6 +562,58 @@ angular.module('myApp.controllers', [])
             }])
         .controller('uploadCtrl', ['$scope', '$fileUploader', function($scope, $fileUploader) {
 
+
+
+            }])
+        .controller('ordersCtrl', ['$scope','deliverOrderService','$timeout','nodemailer', 'getOrders','$location','toaster', function($scope, deliverOrderService,$timeout, nodemailer,  getOrders, $location, toaster) {
+
+                if (loggedInUser) {
+                    
+                }
+
+                else {
+                    //console.log('not authorised');
+                    //$location.path('/intelMotherboards');
+                    //sLogin = '/orders';
+                    
+                    //toaster.pop('error', "Sorry", 'Not Authorised');
+                    //$('#loginButton').click();
+
+                };
+
+
+                $scope.orders = getOrders.query();
+                
+                $scope.refreshOrders = function(){
+                    console.log('Refreshing Orders List...');
+                    $scope.orders = getOrders.query();
+                };
+                
+                $scope.deliver = function(order){
+                   console.log(order._id); 
+                   var data = {};
+                   data.id = order._id;
+                   data.email = order.email;
+                   console.log(data);
+                   deliverOrderService.save(data);
+                   $timeout($scope.refreshOrders, 1000);
+                };
+                
+                
+                $scope.sendmail = function(){
+                    nodemailer.send();
+                };
+
+            }])
+        .controller('statusCtrl', ['$scope', 'getStatus', function($scope, getStatus) {
+                    
+                    $scope.getStatus = function(id){
+                        $scope.order.id = id;
+                        $scope.orderStatus = getStatus.save({'id':id}, function(data){
+                            $scope.status = data.status || 'Pending';
+                            //console.log(data);
+                        });
+                    };
 
 
             }]);

@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/public/blank.html</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/app.js</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/public/appJs/controllers.js</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/routes/getStatus.js</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/public/partials/final.html</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/public/appJs/app.js</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/public/partials/status.html</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/public/partials/orders.html</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/public/appJs/services.js</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/routes/deliverOrderService.js</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/routes/nodemailer.js</file>
+            <file>file:/C:/Users/Gaurav/Desktop/Test/public/partials/mail.html</file>
+        </group>
     </open-files>
 </project-private>

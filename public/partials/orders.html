@@ -1,0 +1,41 @@
+<h1 class="page-header">Orders</h1>
+
+<div class="row">
+    <div class="col-sm-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Orders
+
+            </header>
+            <div class="panel-body">
+                <div class="adv-table">
+                    <table  class="display table table-bordered table-striped" id="dynamic-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                                <th>Price (Rs)</th>
+                                <th>Status</th>
+                                <th>Deliver</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="order in orders">
+                                <td>{{order.name}}</td>
+                                <td>{{order.email}}</td>
+                                <td>{{order.time}}</td>
+                                <td>{{order.price}}</td>
+                                <td>{{order.status|| 'Pending'}}</td>
+                                <td><button type="button" class="btn btn-primary" ng-click="deliver(order)">Dispatch</button></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

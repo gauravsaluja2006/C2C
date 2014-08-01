@@ -1,0 +1,93 @@
+[
+    {
+        "Name":"Z97 EXTREME 3",
+        "Platform":"Intel",
+        "Manufacturer":"ASRock",
+        "Price":9990,
+        "img":"7ASROCK Z97 EXTREME 3.jpg"
+    },
+    {
+        "Name":"H81M-HDS",
+        "Platform":"Intel",
+        "Manufacturer":"ASRock",
+        "Price":3890,
+        "img":"ASROCK H81M-HDS (1150).jpg"
+    },
+    {
+        "Name":"H81MK",
+        "Platform":"Intel",
+        "Manufacturer":"ASUS",
+        "Price":3690,
+        "img":"ASUS H81MK (1150).jpg"
+    },
+    {
+        "Name":"M5A 97 LE (970)",
+        "Platform":"AMD",
+        "Manufacturer":"ASUS",
+        "Price":5650,
+        "img":"ASUS M5A 97 LE (970) AMD.jpg"
+    },
+    {
+        "Name":"M5A 99FX PRO",
+        "Platform":"AMD",
+        "Manufacturer":"ASUS",
+        "Price":10990,
+        "img":"ASUS M5A 99FX PRO (990 AMD.jpg"
+    },
+    {
+        "Name":"Z87PRO",
+        "Platform":"Intel",
+        "Manufacturer":"ASUS",
+        "Price":15990,
+        "img":"ASUS Z87PRO (1150).jpg"
+    },
+    {
+        "Name":"78LMT-S2",
+        "Platform":"AMD",
+        "Manufacturer":"Gigabyte",
+        "Price":2700,
+        "img":"GIGABYTE 78LMT-S2 AMD.jpg"
+    },
+    {
+        "Name":"78LMT-S2 USB3",
+        "Platform":"AMD",
+        "Manufacturer":"Gigabyte",
+        "Price":4050,
+        "img":"GIGABYTE 78LMT-S2 USB3 AMD.jpg"
+    },
+    {
+        "Name":"990XA-UD3",
+        "Platform":"AMD",
+        "Manufacturer":"Gigabyte",
+        "Price":9390,
+        "img":"GIGABYTE 990XA-UD3 AMD.jpg"
+    },
+    {
+        "Name":"B75M-D3V",
+        "Platform":"Intel",
+        "Manufacturer":"Gigabyte",
+        "Price":5190,
+        "img":"GIGABYTE B75M-D3V (1155).jpg"
+    },
+    {
+        "Name":"F2A55M-S1",
+        "Platform":"AMD",
+        "Manufacturer":"Gigabyte",
+        "Price":3090,
+        "img":"GIGABYTE F2A55M-S1 AMD.jpg"
+    },
+    {
+        "Name":"G1 SNIPER",
+        "Platform":"Intel",
+        "Manufacturer":"Gigabyte",
+        "Price":11390,
+        "img":"GIGABYTE G1 SNIPER (Z 77).jpg"
+    },
+    {
+        "Name":"DX79SR",
+        "Platform":"Intel",
+        "Manufacturer":"Intel",
+        "Price":19990,
+        "img":"INTELDX79SR (2011).jpg"
+    }    
+]

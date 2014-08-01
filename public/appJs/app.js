@@ -30,6 +30,10 @@ angular.module('myApp', [
                 $routeProvider.when('/gallery', {templateUrl: 'partials/gallery.html', controller: 'intelMotherboardsCtrl'});
                 $routeProvider.when('/dashboard', {templateUrl: 'partials/dashboard.html', controller: 'dashCtrl'});
                 $routeProvider.when('/upload', {templateUrl: 'partials/upload.html', controller: 'uploadCtrl'});
+                $routeProvider.when('/orders', {templateUrl: 'partials/orders.html', controller: 'ordersCtrl'});
+                $routeProvider.when('/add', {templateUrl: 'partials/add.html', controller: 'dashCtrl'});
+                $routeProvider.when('/nodemail', {templateUrl: 'partials/mail.html', controller: 'ordersCtrl'});
+                $routeProvider.when('/getStatus', {templateUrl: 'partials/status.html', controller: 'statusCtrl'});
 
 
 

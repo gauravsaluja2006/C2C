@@ -20,8 +20,11 @@
                             <div class="daily-visit">
                                 <h4 class="widget-h">{{motherboard.Name}}</h4>
 
-                                <div id="daily-visit-chart" style="width:100%; height: 100px; display: block">
+                                <div ng-if="motherboard.img" id="daily-visit-chart" style="width:100%; height: 100px; display: block">
                                     <img ng-src="/img/intel/{{motherboard.img}}" style="width: 100px; height: 100px;">
+                                </div>
+                                <div ng-if="!motherboard.img" id="daily-visit-chart" style="width:100%; height: 100px; display: block">
+                                    <img ng-src="/img/mb.jpg" style="width: 100px; height: 100px;">
                                 </div>
                                 <ul class="chart-meta clearfix">
                                     <li class="pull-left visit-chart-value">Rs {{motherboard.Price}}</li>

@@ -8,7 +8,9 @@
   "dependencies": {
     "express": "~3.3.4",
     "jade": "~0.34.0",
-    "mongodb": "^1.4.7"
+    "mongodb": "^1.4.7",
+    "nodemailer": "^1.1.1",
+    "nodemailer-smtp-transport": "^0.1.12"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

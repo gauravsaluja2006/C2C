@@ -1,0 +1,8 @@
+<h1 class="page-header">Get Your Status</h1>
+
+<input type="text" ng-model="orderId"/>
+
+<a ng-click="getStatus(orderId)" href="">Get Status</a>
+<div ng-show="status">
+Your Order Status is : {{status | json}}
+</div>

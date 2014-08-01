@@ -79,7 +79,7 @@
 
                             <!-- user login dropdown start-->
                             <li class="dropdown" id="demo-lo">
-                                <a role="button" data-toggle="modal" data-target="#loginModal" style="cursor: pointer;">
+                                <a id="loginButton" role="button" data-toggle="modal" data-target="#loginModal" style="cursor: pointer;">
                                     <img alt="" src="images/avatar1_small.jpg">
                                     <span class="username">Admin Login</span>
                                     <b class="caret"></b>
@@ -112,14 +112,24 @@
                                         <div class="panel-body">
 
                                             <ul class="nav nav-pills nav-stacked mail-nav">
-                                                <li id="demo-mo" ng-class="{active: routeIs('/intelMotherboards')}" style="position: relative;"><a href="#/intelMotherboards"> <i class="fa fa-inbox"></i> Motherboards </a>  <span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.motherboard == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
-                                                <li ng-class="{active: routeIs('/intelProcessors')}"><a href="#/intelProcessors"> <i class="fa fa-envelope-o"></i> Processors</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.processor == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
-                                                <li ng-class="{active: routeIs('/mouse')}"><a href="#/mouse"> <i class="fa fa-certificate"></i> Mouse</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.mouse == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
-                                                <li ng-class="{active: routeIs('/keyboard')}"><a href="#/keyboard"> <i class="fa fa-file-text-o"></i> Keyboard </a></a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.keyboard == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
-                                                <li ng-class="{active: routeIs('/monitor')}"><a href="#/monitor"> <i class="fa fa-trash-o"></i> Monitor</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.monitor == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <li  style="position: relative;"><a href="#/intelMotherboards" ng-click="createPC = !createPC;"> <i class="fa fa-inbox"></i> Create PC </a>  <span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.motherboard == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+
+
+                                                <li ng-show="createPC" id="demo-mo" ng-class="{active: routeIs('/intelMotherboards')}" style="position: relative;"><a href="#/intelMotherboards"> <i class="fa fa-inbox"></i> Motherboards </a>  <span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.motherboard == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <li ng-show="createPC" ng-class="{active: routeIs('/intelProcessors')}"><a href="#/intelProcessors"> <i class="fa fa-envelope-o"></i> Processors</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.processor == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <li ng-show="createPC" ng-class="{active: routeIs('/mouse')}"><a href="#/mouse"> <i class="fa fa-certificate"></i> Mouse</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.mouse == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <li ng-show="createPC" ng-class="{active: routeIs('/keyboard')}"><a href="#/keyboard"> <i class="fa fa-file-text-o"></i> Keyboard </a></a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.keyboard == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+                                                <li ng-show="createPC" ng-class="{active: routeIs('/monitor')}"><a href="#/monitor"> <i class="fa fa-trash-o"></i> Monitor</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.monitor == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
                                                 <br/><br/>
-                                                <li id="demo-pr" style="color:#428bca;padding-top: 16px;border-top: 1px solid #dddddd; margin-left: 15px;"><i class="fa fa-trash-o"></i> Price: &nbsp;{{myPc.total}} </li>
-                                            
+                                                <li ng-show="createPC" id="demo-pr" style="color:#428bca;padding-top: 16px;border-top: 1px solid #dddddd; margin-left: 15px;"><i class="fa fa-trash-o"></i> Price: &nbsp;{{myPc.total}} </li>
+                                                <br/> &nbsp;&nbsp;
+                                                <a href="#/final" type="button" class="btn btn-round btn-info" ng-show="finalised >= 5">Finalize Order</a>
+
+
+
+                                                <li ng-class="{active: routeIs('/getStatus')}"><a href="#/getStatus"> <i class="fa fa-envelope-o"></i> Get Status</a><span style="position: absolute; right: 15px; top: 10px;" ng-show="myPc.set.processor == 'Y'"><img src="img/tick.png" alt="" style="height: 25px; width: 25px;"/></span></li>
+
+
                                             </ul>
 
                                         </div>
@@ -280,39 +290,39 @@
                     <script src="css/bootstrap-tour/bootstrap-tour.js" type="text/javascript"></script>
                     <script>
                                                                 var tour = new Tour({
-                                                                    storage:false,
-                                                                    keyboard:true
+                                                                    storage: false,
+                                                                    keyboard: true
                                                                 });
                                                                 tour.addSteps([
                                                                     {
                                                                         element: "#demo-mo", // element selector to show the popover next to;
                                                                         title: "Choose your components here!",
                                                                         content: "An arrow will show up when they are selected."
-                                                                        
+
                                                                     },
                                                                     {
                                                                         element: "#demo-lo",
                                                                         title: "Add inventory?.",
                                                                         content: "Login as Admin!",
-                                                                        placement:"bottom"
+                                                                        placement: "bottom"
                                                                     },
                                                                     {
                                                                         element: "#demo-co",
                                                                         title: "Want to compare items?.",
                                                                         content: "Drag them to the compare box!",
-                                                                        placement:"left"
+                                                                        placement: "left"
                                                                     },
                                                                     {
                                                                         element: "#demo-le",
                                                                         title: "Need more space?",
                                                                         content: "Click the button to retract sidebar!",
-                                                                        placement:"right"
+                                                                        placement: "right"
                                                                     },
                                                                     {
                                                                         element: "#demo-pr",
                                                                         title: "Stay Updated!",
                                                                         content: "You can see the total price here!",
-                                                                        placement:"right"
+                                                                        placement: "right"
                                                                     }
                                                                 ]);
 
@@ -325,5 +335,6 @@
 
 
 
-                    </body>
-                    </html>
+                </div>
+                </body>
+                </html>

@@ -1,0 +1,86 @@
+[
+    {
+        "Name": "DUAL CORE",
+        "Platform": "Intel",
+        "Manufacturer": "Intel",
+        "Price": 2790,
+        "img": "/img/intelimg/processors/core2.png"
+    },
+    {
+        "Name": "APU 4000",
+        "Platform": "AMD",
+        "Manufacturer": "AMD",
+        "Price": 2190,
+        "img": "/img/intel/processors/AMD.png"
+    },
+    {
+        "Name": "BULLDOZER FX 4300",
+        "Platform": "AMD",
+        "Manufacturer": "AMD",
+        "Price": 5540,
+        "img": "/img/intel/processors/AMD.png"
+    },
+    {
+        "Name": "BULLDOZER FX 8320",
+        "Platform": "AMD",
+        "Manufacturer": "AMD",
+        "Price": 9390,
+    "img": "/img/intel/processors/AMD.png"
+    },
+    {
+        "Name": "BULLDOZER FX 8350",
+        "Platform": "AMD",
+        "Manufacturer": "AMD",
+        "Price": 11790,
+        "img": "/img/intel/processors/AMD.jpg"
+    },
+    {
+        "Name": "E3 1245 V3 (SERVER)",
+        "Platform": "Intel",
+        "Manufacturer": "Intel",
+        "Price": 9390,
+        "img": "/img/intel/processors/xeon.png"
+    },
+    {
+        "Name": "I-3 (2120)(1155)",
+        "Platform": "Intel",
+        "Manufacturer": "Intel",
+        "Price": 5990,
+        "img": "/img/intel/processors/i3.png"
+    },
+    {
+        "Name": "I-5 (3330)(1155)",
+        "Platform": "Intel",
+        "Manufacturer": "Intel",
+        "Price": 9990,
+        "img": "/img/intel/processors/i5.png"
+    },
+    {
+        "Name": "I-7 (3770K)(1155)",
+        "Platform": "Intel",
+        "Manufacturer": "Intel",
+        "Price": 19990,
+        "img": "/img/intel/processors/i7.png"
+    },
+    {
+        "Name": "I-7 (4820K) (2011)",
+        "Platform": "Intel",
+        "Manufacturer": "Intel",
+        "Price": 24990,
+        "img": "/img/intel/processors/i7.png"
+    },
+    {
+        "Name": "I-7 (4930K) (2011)",
+        "Platform": "Intel",
+        "Manufacturer": "Intel",
+        "Price": 37990,
+        "img": "/img/intel/processors/i7.png"
+    },
+    {
+        "Name": "I-5 (4790) (1150)",
+        "Platform": "Intel",
+        "Manufacturer": "Intel",
+        "Price": 18790,
+        "img": "/img/intel/processors/i5.png"
+    }
+]
